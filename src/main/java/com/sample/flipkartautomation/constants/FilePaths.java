@@ -5,4 +5,5 @@ public interface FilePaths {
 	String chromeDriverDir = userDir+ "/lib/chromedriver.exe";
 	String mozillaDriverDir = userDir+"/lib/geckodriver.exe";
 	String 	ieDriverDir = userDir+"/lib/IEDriverServer.exe";
+	String 	edgeDriverDir = userDir+"/lib/MicrosoftWebDriver.exe";
 }

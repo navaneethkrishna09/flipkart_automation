@@ -46,9 +46,10 @@ public class TestRunner implements FilePaths, UserCredentials, ProductDetails {
 	@Test(testName = "Normal Launch", priority = 1)
 	public void launch() throws Exception {
 		PurchaseFlowEngine engine = new PurchaseFlowEngine();
-		driver = dr.setup(browser, url, chromeDriverDir, mozillaDriverDir);
-		engine.test(driver, mobileNumber, password, productSearchName, pincodeLength);
-		System.out.println(driver);
+		driver = dr.setup(browser, url, chromeDriverDir, mozillaDriverDir, edgeDriverDir);
+		String[] amount = engine.test(driver, mobileNumber, password, productSearchName, pincodeLength,pincode);
+		Assert.assertEquals(amount[0], amount[1], "Product amount does not match with the cart amount");
+		Assert.assertTrue(amount[2].contains(amount[3]), "Product name does not match with the cart name");
 
 	}
 
@@ -63,15 +64,7 @@ public class TestRunner implements FilePaths, UserCredentials, ProductDetails {
 	public void gridLaunch() throws Exception {
 		PurchaseFlowEngine engine = new PurchaseFlowEngine();
 		driver = grid.setup(url, chromeDriverDir);
-		engine.test(driver, mobileNumber, password, productSearchName, pincodeLength);
-	}
-
-	@Test(priority = 2)
-	public void verifyProductDetails() {
-		Cart cart = new Cart(driver);
-		ItemAddToCart itemaddtocart = new ItemAddToCart(driver);
-		Assert.assertEquals(itemaddtocart.productAmount, cart.cartAmount, "Amount does not match");
-		Assert.assertEquals(itemaddtocart.productName, cart.cartName, "Description does not match");
+		engine.test(driver, mobileNumber, password, productSearchName, pincodeLength,pincode);
 	}
 
 	@AfterTest

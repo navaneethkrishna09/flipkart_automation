@@ -5,8 +5,8 @@
     <classes>
       <class name="com.sample.flipkartautomation.run.TestRunner">
         <methods>
+          <include name="launch"/>
           <include name="teardown"/>
-          <include name="gridLaunch"/>
         </methods>
       </class> <!-- com.sample.flipkartautomation.run.TestRunner -->
     </classes>

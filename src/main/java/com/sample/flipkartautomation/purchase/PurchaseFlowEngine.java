@@ -13,8 +13,12 @@ import com.sample.flipkartautomation.pages.PopUpDismiss;
 // Class used for driving the purchase testcases.
 public class PurchaseFlowEngine {
 
-	public void test(WebDriver driver, String userNumber, String password, String productName, int pincodeLength)
+	public String[] test(WebDriver driver, String userNumber, String password, String productSearchName, int pincodeLength,String pincode)
 			throws Exception {
+		String productAmount;
+		String cartAmount;
+		String productName;
+		String cartName;
 
 		PopUpDismiss popupdismiss = new PopUpDismiss(driver);
 		Login loginobj = new Login(driver);
@@ -27,12 +31,19 @@ public class PurchaseFlowEngine {
 		// Linking the classes for driving the execution
 		popupdismiss.initialPopUpClose();
 		loginobj.homepageLoginClick().enterNumber(userNumber).enterPassword(password).loginButtonClick();
-		itemsearch.searchBarEntry(productName);
+		itemsearch.searchBarEntry(productSearchName);
 		itemselect.randomItemFinder().scrollAction().itemClick();
-		itemaddtocart.switchWindow().getProductAmount().getProductName().scrollAction().pincodeHandler(pincodeLength)
+		itemaddtocart.switchWindow().getProductAmount().getProductName().scrollAction().pincodeHandler(pincodeLength,pincode)
 				.addToCartClick();
 		cart.getCartProductAmount().getCartProductName();
+		// Getting the Amount and Name of the product
+		cartAmount = cart.cartAmount;
+		cartName = cart.cartName;
+		productAmount = itemaddtocart.productAmount;
+		productName = itemaddtocart.productName;
+		String[] productValues = { productAmount, cartAmount, productName, cartName };
 		logout.logoutClick();
+		return productValues;
 
 	}
 

@@ -56,7 +56,7 @@ public class ItemAddToCart {
 	}
 
 	// For handling the autopopulated pincode.
-	public ItemAddToCart pincodeHandler(int pincodeLength) {
+	public ItemAddToCart pincodeHandler(int pincodeLength,String pincode) {
 		boolean bool = driver.findElement(By.xpath(("//*[@class='_2AkmmA _2Npkh4 _2MWPVK _18WSRq']"))).isEnabled();
 		if (!bool) {
 			driver.findElement(By.xpath("//*[@class='_3X4tVa']")).click();
@@ -65,7 +65,7 @@ public class ItemAddToCart {
 				pincodeLength--;
 			}
 			driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@class='_3X4tVa']")).sendKeys("400004");
+			driver.findElement(By.xpath("//*[@class='_3X4tVa']")).sendKeys(pincode);
 			driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 			driver.findElement(By.xpath("//*[@class='_2aK_gu']")).click();
 			driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
