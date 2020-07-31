@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Testing]">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="com.sample.flipkartautomation.run.loginRunner">
+        <methods>
+          <include name="driverstart"/>
+          <include name="truncate"/>
+          <include name="loginrun"/>
+        </methods>
+      </class> <!-- com.sample.flipkartautomation.run.loginRunner -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Testing] -->

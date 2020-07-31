@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="1" verbose="1" name="Testing" annotations="JDK" parallel="tests">
+    <test name="Normal Launch">
+     </test> <!-- Test -->
+!    <test name="Grid Launch">
+     </test> <!-- Test -->
+</suite> <!-- Suite -->
